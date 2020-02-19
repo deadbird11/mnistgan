@@ -8,7 +8,7 @@ Creating my first GAN for MNIST data set. This program creates handwritten digit
 [SciPy](https://scipy.org/install.html)  
 
 ## Usage
-For now, simply `git clone` the project into a directory and run `python main.py`.
+For now, simply `git clone` the project into a directory and run `python main.py`. If you want to see the TensorBoard analytics, open another console and type `tensorboard --logdir ./logs/gradient_tape`.
 
 ## Current State
 There are still some bugs so I'd wait a bit before trying it out for yourself.
