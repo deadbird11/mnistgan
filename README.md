@@ -16,4 +16,4 @@ There are still some bugs so I'd wait a bit before trying it out for yourself.
 This project uses a Deep Convolution GAN (DCGAN) with a Wasserstein loss function to learn to produce realistic handwritten digits.
 
 ## Acknowledgements
-This program implements a Deep Convolutional Generative Adversarial Network (DCGAN) as laid out by [Radford et al. (2015)](https://arxiv.org/abs/1511.06434v2). The structure they suggest has been modified a bit in this project to fit with the 28x28 images provided by mnist. I have also had some help from the [`tensorflow` page about DCGANs](https://www.tensorflow.org/tutorials/generative/dcgan) to help layout the steps of the algorithm.
+This program implements a Deep Convolutional Generative Adversarial Network (DCGAN) as laid out by [Radford et al. (2015)](https://arxiv.org/abs/1511.06434v2). The structure they suggest has been modified a bit in this project to fit with the 28x28 images provided by mnist. I have also had some help from the [`tensorflow` page about DCGANs](https://www.tensorflow.org/tutorials/generative/dcgan) to help layout the steps of the algorithm (this project is also meant to help me learn tensorflow).
