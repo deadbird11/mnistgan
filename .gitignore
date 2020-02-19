@@ -1,0 +1,3 @@
+logs/gradient_tape/*
+progress_images/*
+training_checkpoints/*
