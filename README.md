@@ -11,7 +11,7 @@ Creating my first GAN for MNIST data set. This program creates handwritten digit
 For now, simply `git clone` the project into a directory and run `python main.py`. If you want to see the TensorBoard analytics, open another console and type `tensorboard --logdir ./logs/gradient_tape`.
 
 ## Current State
-There are still some bugs so I'd wait a bit before trying it out for yourself.
+Aeshetic's wise, I just have to fix an issue with the matplotlib windows being blank, unless I want to add graphs to track the gradients which I will do later on down the road. As for the actual algorithm, I want to normalize the data from the generator into the discriminator but otherwise I'll be ready to start moving onto a bigger and better version of this.
 
 ## Method
 This project uses a Deep Convolution GAN (DCGAN) with a Wasserstein loss function to learn to produce realistic handwritten digits.
