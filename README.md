@@ -4,7 +4,7 @@ Creating my first GAN for MNIST data set. This program creates handwritten digit
 ## Prerequisites
 [Python 3.7.6](https://www.python.org/downloads/release/python-376/)  
 [TensorFlow 2.0.0](https://www.tensorflow.org/install/pip)  
-[TensorBoard 2.0.0](https://stackoverflow.com/questions/33634008/how-do-i-install-tensorflows-tensorboard) (should come with tensorflow install)]
+[TensorBoard 2.0.0](https://stackoverflow.com/questions/33634008/how-do-i-install-tensorflows-tensorboard) (should come with tensorflow install)  
 [SciPy](https://scipy.org/install.html)  
 
 ## Usage
