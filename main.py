@@ -14,17 +14,17 @@ EPOCHS = 50
 display_interval = 2
 num_display_pics = 16
 
+# preparing data set
 (train_images, train_labels), (_, _) = mnist.load_data()
 
 train_images = train_images.reshape(train_images.shape[0], 28, 28, 1).astype('float32')
 train_images = (train_images - 127.5) / 127.5
 train_dataset = tf.data.Dataset.from_tensor_slices(train_images).shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
 
+# preparing to log
 current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 train_log_dir = 'logs/gradient_tape/' + current_time + '/train'
 train_summary_writer = tf.summary.create_file_writer(train_log_dir)
-
-# Define our metrics
 disc_loss_log = tf.keras.metrics.Mean('disc_loss', dtype=tf.float32)
 
 def make_generator_model():
@@ -54,26 +54,25 @@ def make_discriminator_model():
     model = tf.keras.Sequential()
 
     # CONV 1
-    model.add(layers.Conv2D(64, kernel_size=2, strides=2, padding='same', input_shape=(28,28,1)))
+    model.add(layers.Conv2D(64, kernel_size=(5,5), strides=(2,2), 
+                            padding='same', input_shape=(28,28,1)))
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU(alpha=0.2))
+    model.add(layers.Dropout(0.3))
 
     # CONV 2
-    model.add(layers.Conv2D(128, kernel_size=3, strides=2, padding='same'))
+    model.add(layers.Conv2D(128, kernel_size=(5,5), 
+                            strides=(2,2), padding='same'))
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU(alpha=0.2))
-
-    # CONV 3
-    model.add(layers.Conv2D(256, kernel_size=3, strides=1, padding='same'))
-    model.add(layers.BatchNormalization())
-    model.add(layers.LeakyReLU(alpha=0.2))
+    model.add(layers.Dropout(0.3))
 
     model.add(layers.Flatten())
     model.add(layers.Dense(1))
-    model.add(layers.LeakyReLU(alpha=0.2))
 
     return model
 
+# implementing Wasserstein loss
 def discriminator_loss(real_pred, fake_pred):
     return tf.reduce_mean(fake_pred) - tf.reduce_mean(real_pred)
 
@@ -123,6 +122,7 @@ def train(dataset, epochs):
             train_step(batch)
         with train_summary_writer.as_default():
             tf.summary.scalar('disc_loss', disc_loss_log.result(), step=epoch)
+            
         
         print ('Time for epoch {} is {} sec'.format(epoch + 1, time.time()-start))
 
