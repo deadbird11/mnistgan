@@ -11,7 +11,7 @@ noise_dim = 100
 BUFFER_SIZE = 60000
 BATCH_SIZE = 64
 EPOCHS = 50
-display_interval = 2
+display_interval = 1
 num_display_pics = 16
 
 # preparing data set
@@ -134,7 +134,6 @@ def train(dataset, epochs):
         
         disc_loss_log.reset_states()
 
-
 def generate_and_save_images(model, epoch, test_input):
   # Notice `training` is set to False.
   # This is so all layers run in inference mode (batchnorm).
@@ -147,7 +146,10 @@ def generate_and_save_images(model, epoch, test_input):
       plt.imshow(predictions[i, :, :, 0] * 127.5 + 127.5, cmap='gray')
       plt.axis('off')
 
+  plt.pause(0.01)
   plt.savefig('progress_images/image_at_epoch_{:04d}.png'.format(epoch))
-  plt.show(block=False)
+  plt.ion()
+  plt.show()
+
 
 train(train_dataset, EPOCHS)
